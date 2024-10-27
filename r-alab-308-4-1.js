@@ -30,12 +30,12 @@ console.log('===================================================================
 
 //new code -refactoring old code -Part 1- This Works, I'm slightly confused if this contributes to Part 2 as it functions in one big Array and Part 2 calls for more 'nested' arrays
 
-const csv_Str = "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor\'s Assistant,26";
+// const csv_Str = "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor\'s Assistant,26";
 
-//console.log (csv_Str); - may not need this 
+// //console.log (csv_Str); - may not need this 
 
- const newTableRow = csv_Str.split('\n'); //  Helps splits the CSV string into rows.
-console.log(newTableRow);
+//  const newTableRow = csv_Str.split('\n'); //  Helps splits the CSV string into rows.
+// console.log(newTableRow);
 
 
 
@@ -50,22 +50,38 @@ console.log(newTableRow);
 
 console.log('===================================================================================================================================')
 
-// Expanding Functionality -Part 2
+// Expanding Functionality -Part 2- This Works, like I said above I'm slightly confused as this blurs into Part 1 
 
-// let csv_Str = "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor\'s Assistant,26";
+let csv_Str = "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor\'s Assistant,26";
 
 // console.log (csv_Str);
 
-//const
-// const tableArray = [];
-// const newTableRow = csv_Str.split('\n'); //  Helps splits the CSV string into rows.
-// let newCell = 0 ;
 
-// newTableRow.forEach(row => {
-//     const cells = row.split(','); // Helps split each row into cells
-//     console.log(cells.join(', ')); // should help with the cells 
-// });
+const tableHeadArray = [];  //big array catcher
 
+const newTableRow = csv_Str.split('\n'); //  Helps splits the CSV string into rows.
+const header = newTableRow[0].split(',');
+
+tableHeadArray.push(header);  //moves all header elements into the header
+
+newTableRow.slice(1).forEach(row => {
+    const cells = row.split(',');
+    //console.log(cells.join(', '));    // should help with the cells 
+    tableHeadArray.push(cells);
+});
+
+console.log(tableHeadArray);
 
 console.log('===================================================================================================================================')
 
+// Transforming Data  Part 3 
+
+// let csv_Str = "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor\'s Assistant,26";
+
+// const newObjectArray =[];
+
+// const newTableRow = csv_Str.split('\n');
+// const header = newTableRow[0].split(',').map(h => h.trim().toLowerCase());
+// //const headings = header[0]; 
+
+// for (let i= 1;)
